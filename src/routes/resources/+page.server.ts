@@ -14,7 +14,16 @@ let resource;
 for (resource of yml_data) {
   tags.push(...resource.tags)
 }
-tags = [...new Set(tags)]
+tags = [...new Set(tags)].sort((a,b) => {
+  function removeEmojisFromString(str: string){
+    let emojis = /<a?:.+?:\d{18}>|\p{Extended_Pictographic}/gu;
+    return str.replace(emojis, '').trim();
+  }
+  const aTagWithoutEmojis = removeEmojisFromString(a).toLowerCase();
+  const bTagWithoutEmojis = removeEmojisFromString(b).toLowerCase();
+
+  return aTagWithoutEmojis < bTagWithoutEmojis ? -1 : 1;
+})
 
 //Sorting resources by newest (assuming newest is at the bottom of the file )
 const yml_data_sort = [...yml_data].reverse();
