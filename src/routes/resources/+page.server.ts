@@ -26,9 +26,14 @@ const generateUniquetags = (resources: Resource[]) => {
   return [...new Set(tags)]
 }
 
+const removeEmojisFromStr = (str: string) => {
+  return str.replace(/[\u1000-\uFFFF]+/g, '').trim();
+}
+
+
 const sortAlphabeticallyIgnoringEmojis = (a: string, b: string) => {
-  const aWithoutEmojis = a.replace(/[\u1000-\uFFFF]+/g, '').trim();
-  const bWithoutEmojis = b.replace(/[\u1000-\uFFFF]+/g, '').trim();
+  const aWithoutEmojis = removeEmojisFromStr(a);
+  const bWithoutEmojis = removeEmojisFromStr(b);
 
   return aWithoutEmojis.localeCompare(bWithoutEmojis);
 }
