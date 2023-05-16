@@ -88,7 +88,8 @@
     });
 </script>
 
-<h1 class="pb-5">Resources</h1>
+<h1 class="pb-4">Resources</h1>
+<h4 class="pb-3">{resources.length} resources and counting!!</h4>
 
 <div class="collapsible cursor-pointer text-2xl rounded-lg p-2 border-2">
     <svg
@@ -120,15 +121,15 @@
             {#each tags as tag}
                 <!-- checkboxes -->
                 <div class="flex justify-between gap-2 rounded-full bg-gray-300" >
-                    <label class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2" for={removeWhitespace(tag)}>
+                    <label class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2" for={removeWhitespace(tag.name)}>
                       <input
                         type="checkbox"
                         class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
-                        bind:checked={filterObject.tags[tag]}
-                        id={removeWhitespace(tag)}
-                        name={removeWhitespace(tag)}
+                        bind:checked={filterObject.tags[tag.name]}
+                        id={removeWhitespace(tag.name)}
+                        name={removeWhitespace(tag.name)}
                       />
-                      <span>{tag}</span>
+                      <span>{tag.name} ({tag.count})</span>
                     </label>
                   </div>
             {/each}
