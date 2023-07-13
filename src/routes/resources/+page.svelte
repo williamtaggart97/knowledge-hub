@@ -16,7 +16,6 @@
   let displayedResources = resources;
   let tagLogicAnd: boolean = true;
   let tags: Tag[] = data.payload.tags;
-  let tags_count = data.payload.tags_count;
 
   // Creating form filter options, default view
   let filterObject: FilterOption[] = [];
