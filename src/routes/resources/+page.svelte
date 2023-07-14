@@ -2,7 +2,7 @@
   import type { PageData } from "./$types";
   import { onMount } from "svelte";
   import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants";
-  import type { Tag, FilterOption, FilterLogic } from "$lib/interfaces";
+  import type { Tag, FilterOption, FilterLogic, TagWithCount } from "$lib/interfaces";
   import { setIntersection } from "$lib/utils";
   import ListItem from "./ListItem.svelte";
   import ResourceNav from "$lib/components/ResourceNav.svelte";
@@ -15,14 +15,14 @@
   let resources = data.payload.resources;
   let displayedResources = resources;
   let tagLogicAnd: boolean = true;
-  let tags: Tag[] = data.payload.tags;
+  let tags: TagWithCount[] = data.payload.tags;
 
   // Creating form filter options, default view
   let filterObject: FilterOption[] = [];
   for (const tag of tags) {
     let tagOption: FilterOption = {
       name: tag.name,
-      count: tags_count[tag.name],
+      count: tag.count,
       active: false
     }
     if (tag.color) tagOption['color'] = tag.color

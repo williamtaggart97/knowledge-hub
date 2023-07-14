@@ -4,6 +4,8 @@
   import { github_url, climate_town_url } from "$lib/constants";
   import DarkModeControl from "$lib/components/DarkModeControl.svelte";
   import { onMount } from "svelte";
+  import twemoji from "twemoji";
+
   onMount(() => twemoji.parse(document.body));
 
   import "../app.css";

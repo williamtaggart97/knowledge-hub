@@ -9,7 +9,7 @@ export interface Resource {
 
 export interface Tag {
   name: string;
-  color: string;
+  color?: string;
 }
 
 export interface TagWithCount extends Tag {
